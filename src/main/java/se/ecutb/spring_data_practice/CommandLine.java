@@ -85,14 +85,6 @@ public class CommandLine implements CommandLineRunner {
         Status status3 = new Status("Bromsar ur funktion");
         Status status4 = new Status("Varningstriangel saknas");
 
-//        List<Status> statusList1 = new ArrayList<>();
-//        List<Status> statusList2 = new ArrayList<>();
-//
-//        statusList1.add(status1);
-//        statusList2.add(status2);
-//        statusList2.add(status3);
-//        statusList2.add(status4);
-
         user1.setAddress(address1);
         user1.setOwnedCars(carList1);
         car1.addStatusCode(status1);
@@ -107,7 +99,6 @@ public class CommandLine implements CommandLineRunner {
         car4.addStatusCode(status4);
 
         user4.setAddress(address4);
-
 
         appUserRepository.save(user1);
         appUserRepository.save(user2);
@@ -128,9 +119,10 @@ public class CommandLine implements CommandLineRunner {
         AppUser appUser = appUserRepository.findByEmailContainsIgnoreCase("peter@gmail.com");
         System.out.println(appUser);
 
-                    //Hitta AppUser med specifikt namn.
-                    //List<AppUser> nameResult = appUserRepository.findByNameContainsIgnoreCase("peter");
-                    //nameResult.forEach(System.out::println);
+        //Hitta AppUser med specifikt namn.
+//        List<AppUser> nameResult = appUserRepository.findByNameContainsIgnoreCase("peter");
+//        nameResult.forEach(System.out::println);
+
 
         //Hitta AppUser med specifik email OCH lösenord.
         List<AppUser> emailPasswordResult = appUserRepository.findByEmailAndPassword("lisa@gmail.com", "a1b7");
@@ -154,13 +146,11 @@ public class CommandLine implements CommandLineRunner {
         Car carRegNumberResult = carRepository.findByRegNumberContainsIgnoreCase("qwe125");
         System.out.println(carRegNumberResult);
 
-//---------------------------------------------
 
         //Hitta alla bilar som har en viss statuskod.
-        List<Car> carStatusResult = carRepository.findByStatusCodeContainsIgnoreCase("Körförbud");
+        List<Car> carStatusResult = carRepository.findByStatusCodesStatusCodeContainsIgnoreCase("Varningstriangel saknas");
         carStatusResult.forEach(System.out::println);
 
-//---------------------------------------------
 
         //Hitta alla bilar nyare än ett visst datum.
         List<Car> carOlderThan = carRepository.findByRegDateBefore(LocalDate.parse("2017-01-01"));
@@ -175,6 +165,7 @@ public class CommandLine implements CommandLineRunner {
         carBetweenDates.forEach(System.out::println);
 
 
+        System.out.println(user1.getOwnedCars().toString());
 
 
     }

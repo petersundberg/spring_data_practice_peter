@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface AppUserRepository extends CrudRepository<AppUser, String> {
 
     AppUser findByEmailContainsIgnoreCase(String email);
-    List<AppUser> findByNameContainsIgnoreCase(String name);
+//    List<AppUser> findByNameContainsIgnoreCase(String name);
     List<AppUser> findByEmailAndPassword(String email, String password);
     List<AppUser> findByNameContaining(String string);
 
@@ -20,7 +20,5 @@ public interface AppUserRepository extends CrudRepository<AppUser, String> {
     List<AppUser> findByAddressCityContainsIgnoreCase(String city);
 
 
-
-    //List<AppUser> findByStreetContainsIgnoreCase(String street);
 
 }

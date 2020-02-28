@@ -16,7 +16,7 @@ public interface CarRepository extends CrudRepository<Car, String> {
 //----------------------------
 
     //Hitta alla bilar som har en viss status kod.
-    List<Car> findByStatusCodeContainsIgnoreCase(String statusCode);
+    List<Car> findByStatusCodesStatusCodeContainsIgnoreCase(String statusCode);
 
 //----------------------------
 
