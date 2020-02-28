@@ -109,6 +109,10 @@ public class CommandLine implements CommandLineRunner {
         user4.setAddress(address4);
 
 
+        appUserRepository.save(user1);
+        appUserRepository.save(user2);
+        appUserRepository.save(user3);
+        appUserRepository.save(user4);
 
 //---------------------------------------------------
 
@@ -145,26 +149,30 @@ public class CommandLine implements CommandLineRunner {
         userCityResult.forEach(System.out::println);
 
 
-        //CarRepository
+        //CarRepository:
         //Hitta en bil med specifikt registreringsnummer.
         Car carRegNumberResult = carRepository.findByRegNumberContainsIgnoreCase("qwe125");
-        System.out.println(carRegNumberResult);    //carRegNumberResult.forEach(System.out::println);
+        System.out.println(carRegNumberResult);
 
 //---------------------------------------------
 
-        //Hitta alla bilar som har en viss status kod.
-//        List<Car> carStatusResult = carRepository.findByCarStatusCodeContainsIgnoreCase("Körförbud");
-//        carStatusResult.forEach(System.out::println);
+        //Hitta alla bilar som har en viss statuskod.
+        List<Car> carStatusResult = carRepository.findByStatusCodeContainsIgnoreCase("Körförbud");
+        carStatusResult.forEach(System.out::println);
 
+//---------------------------------------------
 
         //Hitta alla bilar nyare än ett visst datum.
         List<Car> carOlderThan = carRepository.findByRegDateBefore(LocalDate.parse("2017-01-01"));
         carOlderThan.forEach(System.out::println);
-        
 
         //Hitta alla bilar nyare än ett visst datum.
         List<Car> carNewerThan = carRepository.findByRegDateAfter(LocalDate.parse("2017-01-01"));
         carNewerThan.forEach(System.out::println);
+
+        //Hitta alla bilar registrerade mellan två datum.
+        List<Car> carBetweenDates = carRepository.findByRegDateBetween (LocalDate.parse("2016-12-25"), LocalDate.parse("2018-02-01"));
+        carBetweenDates.forEach(System.out::println);
 
 
 
