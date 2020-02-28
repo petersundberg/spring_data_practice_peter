@@ -16,7 +16,7 @@ public interface AppUserRepository extends CrudRepository<AppUser, String> {
     List<AppUser> findByEmailAndPassword(String email, String password);
     List<AppUser> findByNameContaining(String string);
 
-    List<AppUser> findByAddressStreet(String street);
+    List<AppUser> findByAddressStreetContainsIgnoreCase(String street);
     List<AppUser> findByAddressCityContainsIgnoreCase(String city);
 
 
